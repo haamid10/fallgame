@@ -42,22 +42,30 @@ setInterval(function(){
  var holeLast = document.getElementById("hole" +(counter-1));
   if(counter > 0){
      var blockLastTop =parseInt(window.getComputedStyle(blockLast).getPropertyValue("top"))
-     var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"))
+     var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top")) 
   }   
-
-var block = document.createElement("div");
-var hole  =  document.createElement("div");
-block.setAttribute("class" ,"block")
-hole.setAttribute ("class" ,"hole")
-block.setAttribute("id", "block" +counter)
-hole.setAttribute("id", "hole" +counter)
-block.style.top = blockLastTop + 100 + "px";
-hole.style.top = holeLastTop + 100 + "px";
-var random = Math.floor(Math.random()* 360)
-hole.style.left = random + "px"
+if (block < 400 || counter == 0){
+ var block = document.createElement("div");
+ var hole  =  document.createElement("div");
+ block.setAttribute("class" ,"block")
+ hole.setAttribute ("class" ,"hole")
+ block.setAttribute("id", "block" +counter)
+ hole.setAttribute("id", "hole" +counter)
+ block.style.top = blockLastTop + 100 + "px";
+ hole.style.top = holeLastTop + 100 + "px";
+ var random = Math.floor(Math.random()* 360)
+ hole.style.left = random + "px"
 
 game.appendChild(block);
 game.appendChild(hole);
 counter++;
+}
+for(let i =0; i<currentBlocks.length; i++){
+  let current = currentBlocks[i];
+  let iblock = document.getElementById("block"+current)
+  let ihole = document.getElementById("hole"+current)
+  let iblockTop =parseInt(window.getComputedStyle(iblock).getPropertyValue("top"))
+  iblock.style.top= iblockTop - 0.5 + "px"
+  ihole.style.top= iblockTop - 0.5 + "px"}
 
 },1)
