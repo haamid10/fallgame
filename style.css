@@ -18,3 +18,19 @@
   left: 190px;
   z-index: 100000;
 }
+.block{
+  width: 400px;
+  height: 20px;
+  background-color: black;
+  position: relative;
+  top: 100px;
+  margin-top: -20px;
+}
+.hole{
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  position: relative;
+  top: 100px;
+  margin-top: -20px;
+}
