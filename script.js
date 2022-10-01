@@ -3,6 +3,7 @@ var game = document.getElementById("game")
 var interval;
 var both = 0;
 var counter = 0;
+var currentBlocks = [];
 
 function moveLeft(){
   var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
@@ -44,7 +45,7 @@ setInterval(function(){
      var blockLastTop =parseInt(window.getComputedStyle(blockLast).getPropertyValue("top"))
      var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top")) 
   }   
-if (block < 400 || counter == 0){
+if (blockLastTop < 400 || counter == 0){
  var block = document.createElement("div");
  var hole  =  document.createElement("div");
  block.setAttribute("class" ,"block")
@@ -55,17 +56,43 @@ if (block < 400 || counter == 0){
  hole.style.top = holeLastTop + 100 + "px";
  var random = Math.floor(Math.random()* 360)
  hole.style.left = random + "px"
-
 game.appendChild(block);
 game.appendChild(hole);
+currentBlocks.push(counter);
 counter++;
 }
-for(let i =0; i<currentBlocks.length; i++){
+var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top")) 
+var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left")) 
+if(characterTop <= 0){
+  alert("Game over. score: " + (counter-9))
+  clearInterval(blocks)
+}
+for(var i =0; i<currentBlocks.length; i++){
   let current = currentBlocks[i];
-  let iblock = document.getElementById("block"+current)
-  let ihole = document.getElementById("hole"+current)
-  let iblockTop =parseInt(window.getComputedStyle(iblock).getPropertyValue("top"))
+  let iblock = document.getElementById("block"+current);
+  let ihole = document.getElementById("hole"+current);
+  let iblockTop =parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"))
   iblock.style.top= iblockTop - 0.5 + "px"
-  ihole.style.top= iblockTop - 0.5 + "px"}
+  ihole.style.top= iblockTop - 0.5 + "px"
+
+  if(iblockTop< -20){
+    currentBlocks.shift()
+    iblock.remove()
+    ihole.remove
+  }
+  if(iblockTop-20 <characterTop && iblockTop>characterTop){
+    drop++;
+    if(iholeLeft<= characterLeft && iholeLeft +20 >=characterLeft){
+      drop= 0;
+    }
+  }
+  if (drop === 0){
+    if(characterTop>480){
+       character.style.top = characterTop + 2 + "px"
+    }
+  }else{
+    character.style.top =characterTop - 0.5 + "px"
+  }
+}
 
 },1)
