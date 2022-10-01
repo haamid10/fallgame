@@ -38,6 +38,12 @@ document.addEventListener("keyup" , event =>{
 })
 
 setInterval(function(){
+  blockLast - document.getElementById("block" +(counter-1))
+  holeLast - document.getElementById("hole" +(counter-1))
+  if(counter > 0){
+      blockLastTop =window.getComputedStyle(blockLast).getPropertyValue("top")
+      holeLastTop =window.getComputedStyle(holeLast).getPropertyValue("top")
+  }   
 
 var block = document.createElement("div");
 var hole  =  document.createElement("div");
@@ -45,7 +51,8 @@ block.setAttribute("class" ,"block")
 hole.setAttribute ("class" ,"hole")
 block.setAttribute("id", "block"+counter)
 hole.setAttribute("id", "hole"+counter)
-
+block.style.top = blockLastTop +100 + "px"
+hole.style.top = holeLastTop +100 + "px"
 var random = Math.floor(Math.random()* 360)
 hole.style.left = random + "px"
 
