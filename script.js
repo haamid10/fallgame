@@ -3,6 +3,7 @@ var game = document.getElementById("game")
 var interval;
 var both = 0;
 var counter = 0;
+var drop = 0;
 var currentBlocks = [];
 
 function moveLeft(){
@@ -38,7 +39,7 @@ document.addEventListener("keyup" , event =>{
   both = 0;
 })
 
-setInterval(function(){
+var blocks = setInterval(function(){
  var blockLast = document.getElementById("block" +(counter-1));
  var holeLast = document.getElementById("hole" +(counter-1));
   if(counter > 0){
@@ -66,12 +67,14 @@ var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue
 if(characterTop <= 0){
   alert("Game over. score: " + (counter-9))
   clearInterval(blocks)
+  location.reload()
 }
 for(var i =0; i<currentBlocks.length; i++){
   let current = currentBlocks[i];
   let iblock = document.getElementById("block"+current);
   let ihole = document.getElementById("hole"+current);
   let iblockTop =parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"))
+  let iholeLeft =parseFloat(window.getComputedStyle(ihole).getPropertyValue("left"))
   iblock.style.top= iblockTop - 0.5 + "px"
   ihole.style.top= iblockTop - 0.5 + "px"
 
