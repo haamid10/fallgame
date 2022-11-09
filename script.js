@@ -46,21 +46,21 @@ var blocks = setInterval(function(){
      var blockLastTop =parseInt(window.getComputedStyle(blockLast).getPropertyValue("top"))
      var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top")) 
   }   
-if (blockLastTop < 400 || counter == 0){
- var block = document.createElement("div");
- var hole  =  document.createElement("div");
- block.setAttribute("class" ,"block")
- hole.setAttribute ("class" ,"hole")
- block.setAttribute("id", "block"+counter)
- hole.setAttribute("id", "hole"+counter)
- block.style.top = blockLastTop + 100 + "px";
- hole.style.top = holeLastTop + 100 + "px";
- var random = Math.floor(Math.random()* 360)
- hole.style.left = random + "px"
-game.appendChild(block);
-game.appendChild(hole);
-currentBlocks.push(counter);
-counter++;
+if (blockLastTop <400||counter == 0){
+  var block = document.createElement("div");
+  var hole  =  document.createElement("div");
+  block.setAttribute("class" ,"block")
+  hole.setAttribute ("class" ,"hole")
+  block.setAttribute("id", "block"+counter)
+  hole.setAttribute("id", "hole"+counter)
+  block.style.top = blockLastTop + 100 + "px";
+  hole.style.top = holeLastTop + 100 + "px";
+  var random = Math.floor(Math.random()* 360)
+  hole.style.left = random + "px"
+  game.appendChild(block);
+  game.appendChild(hole);
+   currentBlocks.push(counter);
+    counter++;
 }
 var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top")) 
 var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left")) 
@@ -90,16 +90,15 @@ for(var i =0; i<currentBlocks.length; i++){
       drop= 0;
     }
   }
+  }
   if (drop == 0){
-    if(characterTop>480){
+    if(characterTop<480){
        character.style.top = characterTop + 2 + "px"
     }
   }else{
     character.style.top =characterTop - 0.5 + "px"
   }
-}
-
-},2)
+},1)
 
 
 
