@@ -2,5 +2,16 @@
   width: 200px;
   border-radius: 50%;
   display: flex;
-  margin-left:20rem;
+  align-items: flex-end;
+  /* float: left; */
+  /* margin-left:60rem; */
+}
+
+body{
+  background-color: rgb(38, 40, 79);
+}
+.container{
+  width: fit-content;
+  margin: 20rem;
+  background-color: rgb(104, 84, 33);
 }

@@ -123,5 +123,8 @@
 
 
 
-gsap.to('#character',{x:-600,duration:1})
+// gsap.to('#character',{opacity:0 ,y:20},{opacity:1,y:0,duration:1})
 
+const tl =gsap.timeline({defaults:{duration: 0.75}})
+
+tl.fromTo('.container', {scale: 0},{scale:1})
